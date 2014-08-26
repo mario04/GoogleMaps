@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AlexMaps</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="latitud">Latitud: </string>
+    <string name="longitud">Longitud: </string>
+    <string name="hint_latitud">latitud? </string>
+    <string name="hint_longitud">longitud? </string>
+    <string name="text_button_myLocation">Mi ubicación </string>
+    <string name="text_button_findLocation"> Buscar ubicación </string>
+
+</resources>
