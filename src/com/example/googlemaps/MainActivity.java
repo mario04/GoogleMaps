@@ -78,18 +78,28 @@ public class MainActivity extends Activity {
 				List<android.location.Address> addreses;
 				try {
 					addreses = geocoder.getFromLocation(latitud, longitud, 1);
-					String NombrePais = addreses.get(0).getCountryName();
-					String Localidad = addreses.get(0).getLocality();
-					String calle = addreses.get(0).getThoroughfare();
-					String calle2 = addreses.get(0).getFeatureName();
-					if(Localidad == null){Localidad = "";}
-					if(calle == null){calle = "";}
-					if(calle2 == null){calle2 = "";}
-					center = CameraUpdateFactory.newLatLng(UBICACION);
-					map.addMarker(new MarkerOptions().position(UBICACION).title(NombrePais+" "+Localidad)
+					if(addreses.size()>0){
+						String NombrePais = addreses.get(0).getCountryName();
+						String Localidad = addreses.get(0).getLocality();
+						String calle = addreses.get(0).getThoroughfare();
+						String calle2 = addreses.get(0).getFeatureName();
+						if(Localidad == null){Localidad = "";}
+						if(calle == null){calle = "";}
+						if(calle2 == null){calle2 = "";}
+						center = CameraUpdateFactory.newLatLng(UBICACION);
+						map.addMarker(new MarkerOptions().position(UBICACION).title(NombrePais+" "+Localidad)
 			    			.snippet(calle+" "+calle2).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
-					map.moveCamera(center);
-				    map.animateCamera(zoom);
+						map.moveCamera(center);
+						map.animateCamera(zoom);
+					}
+					else{
+						center = CameraUpdateFactory.newLatLng(UBICACION);
+						map.addMarker(new MarkerOptions().position(UBICACION).title("Posición")
+			    			.snippet("Ubicación encontrada").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
+						map.moveCamera(center);
+						map.animateCamera(zoom);
+						
+					}
 				} catch (IOException e1) {
 			
 					e1.printStackTrace();
@@ -132,18 +142,27 @@ public class MainActivity extends Activity {
     	List<android.location.Address> addreses;
 		try {
 			addreses = geocoder.getFromLocation(latitud, longitud, 1);
-			String NombrePais = addreses.get(0).getCountryName();
-			String Localidad = addreses.get(0).getLocality();
-			String calle = addreses.get(0).getThoroughfare();
-			String calle2 = addreses.get(0).getFeatureName();
-			if(Localidad == null){Localidad = "";}
-			if(calle == null){calle = "";}
-			if(calle2 == null){calle2 = "";}
-			center = CameraUpdateFactory.newLatLng(UBICACION);
-			map.addMarker(new MarkerOptions().position(UBICACION).title(NombrePais+" "+Localidad)
+			if(addreses.size()>0){
+				String NombrePais = addreses.get(0).getCountryName();
+				String Localidad = addreses.get(0).getLocality();
+				String calle = addreses.get(0).getThoroughfare();
+				String calle2 = addreses.get(0).getFeatureName();
+				if(Localidad == null){Localidad = "";}
+				if(calle == null){calle = "";}
+				if(calle2 == null){calle2 = "";}
+				center = CameraUpdateFactory.newLatLng(UBICACION);
+				map.addMarker(new MarkerOptions().position(UBICACION).title(NombrePais+" "+Localidad)
 	    			.snippet(calle+" "+calle2).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
-			map.moveCamera(center);
-		    map.animateCamera(zoom);
+				map.moveCamera(center);
+				map.animateCamera(zoom);
+			}
+			else{
+				center = CameraUpdateFactory.newLatLng(UBICACION);
+				map.addMarker(new MarkerOptions().position(UBICACION).title("Posición")
+	    			.snippet("Ubicación encontrada").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
+				map.moveCamera(center);
+				map.animateCamera(zoom);
+			}
 			
 		} catch (IOException e1) {
 	
